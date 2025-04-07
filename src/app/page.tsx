@@ -149,6 +149,11 @@ export default function Page() {
   );
 }
 
+type LineConfig = {
+  dataKey: string;
+  stroke: string;
+};
+
 function CardItem({
   icon,
   label,
@@ -174,14 +179,14 @@ function CardItem({
   );
 }
 
-function ChartCard({
+function ChartCard<T extends { week: string }>({
   title,
   data,
   lines,
 }: {
   title: string;
-  data: any[];
-  lines: { dataKey: string; stroke: string }[];
+  data: T[];
+  lines: LineConfig[];
 }) {
   return (
     <motion.div
